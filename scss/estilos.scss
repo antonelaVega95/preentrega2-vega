@@ -8,461 +8,524 @@ $colorBlanco: #ffffff;
 
 // Extends
 %flexBotonProducto {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
 %botonBase {
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 %tarjetaBase {
-  border-radius: 10px;
-  padding: 1.5rem;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 %centradoTexto {
-  text-align: center;
+    text-align: center;
 }
 
 // Mixins
 @mixin flex-center($direction: row, $justify: center) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justify;
-  align-items: center;
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: center;
 }
 
 @mixin card($bgColor, $borderColor) {
-  background-color: $bgColor;
-  border: 1px solid $borderColor;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: $bgColor;
+    border: 1px solid $borderColor;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 @mixin responsive($size) {
-  @if $size == mobile {
-    @media (max-width: 768px) { @content; }
-  } @else if $size == tablet {
-    @media (max-width: 992px) { @content; }
-  } @else if $size == desktop {
-    @media (min-width: 993px) { @content; }
-  }
+    @if $size ==mobile {
+        @media (max-width: 768px) {
+            @content;
+        }
+    }
+
+    @else if $size ==tablet {
+        @media (max-width: 992px) {
+            @content;
+        }
+    }
+
+    @else if $size ==desktop {
+        @media (min-width: 993px) {
+            @content;
+        }
+    }
 }
 
 // Mixin animación
 @mixin animacion($nombre, $duracion: 1s, $timing: ease-in-out, $retraso: 0s, $iteraciones: 1) {
-  animation-name: $nombre;
-  animation-duration: $duracion;
-  animation-timing-function: $timing;
-  animation-delay: $retraso;
-  animation-iteration-count: $iteraciones;
+    animation-name: $nombre;
+    animation-duration: $duracion;
+    animation-timing-function: $timing;
+    animation-delay: $retraso;
+    animation-iteration-count: $iteraciones;
 }
 
 // Keyframes
 @keyframes aparecerDesdeAbajo {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes subirYDesaparecer {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Reset general */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Cal Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Cal Sans", sans-serif;
 }
 
 a {
-  text-decoration: none;
-  width: 100%;
-  font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
 }
 
 ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
 }
 
 /* Header */
 .headerContainer {
-  position: relative;
-  height: 80vh;
-  background-image: url(../img/imagenHeader.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(
-      270deg,
-      rgba(123, 75, 204, 0.6),
-      rgba(180, 131, 245, 0.6),
-      rgba(123, 75, 204, 0.6),
-      rgba(180, 131, 245, 0.6)
-    );
-    background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  > * {
     position: relative;
-    z-index: 2;
-  }
+    height: 80vh;
+    background-image: url(../img/imagenHeader.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(270deg,
+                rgba(123, 75, 204, 0.6),
+                rgba(180, 131, 245, 0.6),
+                rgba(123, 75, 204, 0.6),
+                rgba(180, 131, 245, 0.6));
+        background-size: 400% 400%;
+        animation: gradientAnimation 15s ease infinite;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    >* {
+        position: relative;
+        z-index: 2;
+    }
 }
 
-/* .oscurecerFondo { ... } */ // borrador
+/* .oscurecerFondo { ... } */
+// borrador
 
 .logotipoHeader {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  object-fit: cover;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .navbar {
-  background-color: #ffffff79 !important;
-  z-index: 1050;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff79 !important;
+    z-index: 1050;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .contenedorSuperiorHeader {
-  @include flex-center(row, space-between);
-  padding: 1rem 2rem;
+    @include flex-center(row, space-between);
+    padding: 1rem 2rem;
 }
 
 .enlacesHeader {
-  margin: 0 1rem;
+    margin: 0 1rem;
 }
 
 .tituloHeader {
-  font-size: 2.5rem;
-  @extend %centradoTexto;
-  color: $colorTituloHeader;
-  text-shadow: none;
-  margin-top: 10rem;
-  font-weight: bold;
-  @include animacion(fadeIn, 1.5s);
+    font-size: 2.5rem;
+    @extend %centradoTexto;
+    color: $colorTituloHeader;
+    text-shadow: none;
+    margin-top: 10rem;
+    font-weight: bold;
+    @include animacion(fadeIn, 1.5s);
 }
 
 .descripcionHeader {
-  font-size: 1.2rem;
-  @extend %centradoTexto;
-  color: #f1f1f1;
-  margin-top: 1rem;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    font-size: 1.2rem;
+    @extend %centradoTexto;
+    color: #f1f1f1;
+    margin-top: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 /* Body */
 body {
-  padding-top: 5px;
+    padding-top: 5px;
 }
 
 /* Título secciones */
 .productosTitulo {
-  font-size: 1.7rem;
-  @extend %centradoTexto;
-  margin: 2rem 0 1rem;
+    font-size: 1.7rem;
+    @extend %centradoTexto;
+    margin: 2rem 0 1rem;
 }
 
 /* Flex */
 .productosFlexContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 2rem;
 }
 
 /* Tarjeta de producto */
 .contenedorProducto {
-  @extend %tarjetaBase;
-  @include card($backgroundColorProducto, blueviolet);
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  @include animacion(aparecerDesdeAbajo, 2s);
-  cursor: pointer;
-  transform-style: preserve-3d;
+    @extend %tarjetaBase;
+    @include card($backgroundColorProducto, blueviolet);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include animacion(aparecerDesdeAbajo, 2s);
+    cursor: pointer;
+    transform-style: preserve-3d;
 }
 
 .contenedorProducto:hover {
-  box-shadow: 0 10px 20px rgba(106, 90, 205, 0.5);
-  transform: translateY(-10px) scale(1.05) rotateX(5deg);
+    box-shadow: 0 10px 20px rgba(106, 90, 205, 0.5);
+    transform: translateY(-10px) scale(1.05) rotateX(5deg);
 }
 
 /* Imagen y detalles de producto */
 .tamañoImagen {
-  width: 30%;
-  height: auto;
+    width: 30%;
+    height: auto;
 }
 
 .contenedorClientes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  padding: 2rem;
-  align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+    align-items: center;
 }
 
 .productoImagen {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .mochilasTitulo {
-  font-weight: bold;
-  margin-top: 1rem;
+    font-weight: bold;
+    margin-top: 1rem;
 }
 
 .descripcionProducto,
 .precioProducto {
-  margin-top: 0.5rem;
-  @extend %centradoTexto;
+    margin-top: 0.5rem;
+    @extend %centradoTexto;
 }
 
 .precioProducto {
-  color: green;
+    color: green;
 }
 
 .precioProducto span {
-  text-decoration: line-through;
-  color: red;
-  margin-right: 0.5rem;
+    text-decoration: line-through;
+    color: red;
+    margin-right: 0.5rem;
 }
 
 .botonProducto {
-  @extend %flexBotonProducto;
+    @extend %flexBotonProducto;
 }
 
 .botonProducto button {
-  @extend %botonBase;
-  background-color: #f3f3f3;
-  color: $buttonColor;
+    @extend %botonBase;
+    background-color: #f3f3f3;
+    color: $buttonColor;
 }
 
 .botonProducto button:hover {
-  background-color: dodgerblue;
-  transform: scale(1.1) translateY(-2px);
+    background-color: dodgerblue;
+    transform: scale(1.1) translateY(-2px);
 }
 
 .botonProducto button:active {
-  background-color: navy;
-  transform: scale(0.95) translateY(1px);
+    background-color: navy;
+    transform: scale(0.95) translateY(1px);
 }
 
 .botonProducto button:focus {
-  outline: 2px solid lightblue;
-  outline-offset: 2px;
+    outline: 2px solid lightblue;
+    outline-offset: 2px;
 }
 
 /* Grid */
 .gridConteiner {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
 }
 
 .gridItems {
-  @extend %tarjetaBase;
-  @include card(#abb1ad, #5d5e5d);
-  @extend %centradoTexto;
-  @include animacion(subirYDesaparecer, 1s);
-  cursor: pointer;
+    @extend %tarjetaBase;
+    @include card(#abb1ad, #5d5e5d);
+    @extend %centradoTexto;
+    @include animacion(subirYDesaparecer, 1s);
+    cursor: pointer;
 }
 
 .gridItems:hover {
-  background-color: #888;
-  color: $colorBlanco;
-  transform: scale(1.07) translateY(-3px);
+    background-color: #888;
+    color: $colorBlanco;
+    transform: scale(1.07) translateY(-3px);
 }
 
 /* Footer */
 footer {
-  background-color: $backgroundColorFooter;
-  color: $colorBlanco;
-  padding: 2rem 1rem;
-  @extend %centradoTexto;
-  margin-top: 3rem;
-  border-top: 3px solid #7b4bcc;
+    background-color: $backgroundColorFooter;
+    color: $colorBlanco;
+    padding: 2rem 1rem;
+    @extend %centradoTexto;
+    margin-top: 3rem;
+    border-top: 3px solid #7b4bcc;
 }
 
 .footerContenido p {
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
 }
 
 .footerRedes {
-  margin: 1rem 0;
-  font-size: 1.5rem;
+    margin: 1rem 0;
+    font-size: 1.5rem;
 }
 
 .footerRedes a {
-  margin: 0 0.5rem;
-  color: $colorBlanco;
-  text-decoration: none;
-  transition: transform 0.3s, color 0.3s;
+    margin: 0 0.5rem;
+    color: $colorBlanco;
+    text-decoration: none;
+    transition: transform 0.3s, color 0.3s;
 }
 
 .footerRedes a:hover {
-  transform: scale(1.2);
-  color: #7b4bcc;
+    transform: scale(1.2);
+    color: #7b4bcc;
 }
 
 .footerContacto {
-  color: $colorBlanco;
-  text-decoration: underline;
+    color: $colorBlanco;
+    text-decoration: underline;
 }
 
 .footerContacto:hover {
-  color: #7b4bcc;
+    color: #7b4bcc;
 }
 
 /* Media queries responsive */
 @include responsive(mobile) {
-  .navbar-nav {
-    flex-direction: column;
-    align-items: center;
-  }
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .contenedorProducto {
-    width: 100%;
-    max-width: 95vw;
-    padding: 1rem;
-  }
+    .contenedorProducto {
+        width: 100%;
+        max-width: 95vw;
+        padding: 1rem;
+    }
 
-  .productoImagen {
-    height: auto;
-    max-height: 200px;
-  }
+    .productoImagen {
+        height: auto;
+        max-height: 200px;
+    }
 
-  .mochilasTitulo {
-    font-size: 1rem;
-  }
+    .mochilasTitulo {
+        font-size: 1rem;
+    }
 
-  .tituloHeader {
-    font-size: 2rem;
-    margin-top: 6rem;
-    padding: 0 1rem;
-  }
+    .tituloHeader {
+        font-size: 2rem;
+        margin-top: 6rem;
+        padding: 0 1rem;
+    }
 
-  .descripcionHeader {
-    font-size: 1rem;
-  }
+    .descripcionHeader {
+        font-size: 1rem;
+    }
 
-  .gridConteiner {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  }
+    .gridConteiner {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
 
-  .headerContainer {
-    height: auto;
-    padding-bottom: 2rem;
-  }
+    .headerContainer {
+        height: auto;
+        padding-bottom: 2rem;
+    }
 
-  .contenedorSuperiorHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
+    .contenedorSuperiorHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
 
-  .footerContenido p {
-    font-size: 0.8rem;
-    padding: 0 1rem;
-  }
+    .footerContenido p {
+        font-size: 0.8rem;
+        padding: 0 1rem;
+    }
 
-  .footerRedes {
-    font-size: 1.2rem;
-  }
+    .footerRedes {
+        font-size: 1.2rem;
+    }
+
+    .contenedorProducto {
+        width: 100%;
+        max-width: 95vw;
+        padding: 1rem;
+        align-items: center;
+    }
+
+    .botonProducto {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .botonProducto button {
+        width: 90%;
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
 }
 
 @include responsive(tablet) {
-  .contenedorProducto { width: 48%; }
+    .contenedorProducto {
+        width: 48%;
+    }
 
-  .tituloHeader {
-    font-size: 2.2rem;
-  }
+    .tituloHeader {
+        font-size: 2.2rem;
+    }
 
-  .descripcionHeader {
-    font-size: 1.1rem;
-  }
+    .descripcionHeader {
+        font-size: 1.1rem;
+    }
 
-  .gridConteiner {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  }
+    .gridConteiner {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
 
-  .contenedorSuperiorHeader {
-    padding: 1rem 1.5rem;
-  }
+    .contenedorSuperiorHeader {
+        padding: 1rem 1.5rem;
+    }
 
-  .footerContenido p {
-    font-size: 0.85rem;
-  }
+    .footerContenido p {
+        font-size: 0.85rem;
+    }
 
-  .footerRedes {
-    font-size: 1.3rem;
-  }
+    .footerRedes {
+        font-size: 1.3rem;
+    }
 }
 
 @include responsive(desktop) {
-  .contenedorProducto { width: 300px; }
+    .contenedorProducto {
+        width: 300px;
+    }
 
-  .tituloHeader {
-    font-size: 2.5rem;
-  }
+    .tituloHeader {
+        font-size: 2.5rem;
+    }
 
-  .descripcionHeader {
-    font-size: 1.2rem;
-  }
+    .descripcionHeader {
+        font-size: 1.2rem;
+    }
 
-  .gridConteiner {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
+    .gridConteiner {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
 
-  .contenedorSuperiorHeader {
-    padding: 1rem 2rem;
-  }
+    .contenedorSuperiorHeader {
+        padding: 1rem 2rem;
+    }
 
-  .footerContenido p {
-    font-size: 0.9rem;
-  }
+    .footerContenido p {
+        font-size: 0.9rem;
+    }
 
-  .footerRedes {
-    font-size: 1.5rem;
-  }
+    .footerRedes {
+        font-size: 1.5rem;
+    }
 }
