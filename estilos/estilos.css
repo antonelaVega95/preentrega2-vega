@@ -18,6 +18,7 @@
   border-radius: 10px;
   padding: 1.5rem;
   transition: transform 0.2s ease;
+  box-sizing: border-box;
 }
 
 footer, .gridItems, .descripcionProducto,
@@ -92,7 +93,6 @@ ul {
   background-position: center;
   height: 80vh;
   position: relative;
-  overflow: hidden;
 }
 .headerContainer::before {
   content: "";
@@ -107,11 +107,12 @@ ul {
   z-index: 1;
   pointer-events: none;
 }
-.headerContainer .oscurecerFondo {
+
+.oscurecerFondo {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.123);
-  position: absolute;
+  position: relative;
   z-index: 2;
 }
 
@@ -183,7 +184,7 @@ body {
   margin: 2rem 0 1rem 0;
 }
 
-/*Flex*/
+/* Flex */
 .productosFlexContainer {
   display: flex;
   flex-wrap: wrap;
@@ -206,6 +207,8 @@ body {
   animation-timing-function: ease-in-out;
   animation-delay: 0s;
   animation-iteration-count: 1;
+  box-sizing: border-box;
+  background-clip: padding-box;
 }
 
 .contenedorProducto:hover {
@@ -254,9 +257,19 @@ body {
   margin-right: 0.5rem;
 }
 
+.botonProducto {
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .botonProducto button {
   background-color: #f3f3f3;
   color: rgb(54, 55, 139);
+  flex: 1 1 45%;
+  min-width: 120px;
+  max-width: 180px;
 }
 
 .botonProducto button:hover {
@@ -348,20 +361,20 @@ footer {
   }
   .contenedorProducto {
     width: 100%;
-    max-width: 95vw;
+    max-width: 350px;
     padding: 1rem;
-    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
   }
   .botonProducto {
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.5rem;
-    width: 100%;
   }
   .botonProducto button {
-    width: 90%;
-    padding: 0.6rem;
-    font-size: 0.9rem;
+    flex: 1 1 45%;
+    min-width: 120px;
+    max-width: 150px;
   }
   .tituloHeader {
     font-size: 2rem;
@@ -394,6 +407,8 @@ footer {
 @media (max-width: 992px) {
   .contenedorProducto {
     width: 48%;
+    max-width: none;
+    padding: 1.5rem;
   }
   .tituloHeader {
     font-size: 2.2rem;
@@ -417,6 +432,8 @@ footer {
 @media (min-width: 993px) {
   .contenedorProducto {
     width: 300px;
+    max-width: none;
+    padding: 1.5rem;
   }
   .tituloHeader {
     font-size: 2.5rem;

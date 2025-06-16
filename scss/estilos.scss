@@ -26,6 +26,7 @@ $colorBlanco: #ffffff;
   border-radius: 10px;
   padding: 1.5rem;
   transition: transform 0.2s ease;
+  box-sizing: border-box;
 }
 
 %centradoTexto {
@@ -56,6 +57,7 @@ $colorBlanco: #ffffff;
   }
 }
 
+// Mixin para animaciones
 @mixin animacion($nombre, $duracion: 1s, $timing: ease-in-out, $retraso: 0s, $iteraciones: 1) {
   animation-name: $nombre;
   animation-duration: $duracion;
@@ -108,32 +110,37 @@ ul {
 
 /* Header */
 .headerContainer {
-  background-image: url(../img/imagenHeader.jpg); 
+  background-image: url(../img/imagenHeader.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 80vh;
   position: relative;
-  overflow: hidden;
 
   &::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(270deg, rgba(123, 75, 204, 0.6), rgba(180, 131, 245, 0.6), rgba(123, 75, 204, 0.6), rgba(180, 131, 245, 0.6));
+    background: linear-gradient(
+      270deg,
+      rgba(123, 75, 204, 0.6),
+      rgba(180, 131, 245, 0.6),
+      rgba(123, 75, 204, 0.6),
+      rgba(180, 131, 245, 0.6)
+    );
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
-    z-index: 1;
+    z-index: 1; // encima de la imagen pero debajo del contenido
     pointer-events: none;
   }
+}
 
-  .oscurecerFondo {
-    width: 100%;
-    height: 100%;
-    background-color: $fondoOscuroColor;
-    position: absolute;
-    z-index: 2;
-  }
+.oscurecerFondo {
+  width: 100%;
+  height: 100%;
+  background-color: $fondoOscuroColor;
+  position: relative;
+  z-index: 2;
 }
 
 .logotipoHeader {
@@ -200,7 +207,7 @@ body {
   margin: 2rem 0 1rem 0;
 }
 
-/*Flex*/
+/* Flex */
 .productosFlexContainer {
   display: flex;
   flex-wrap: wrap;
@@ -218,6 +225,8 @@ body {
   flex-direction: column;
   align-items: center;
   @include animacion(aparecerDesdeAbajo, 2s);
+  box-sizing: border-box;
+  background-clip: padding-box;
 }
 
 .contenedorProducto:hover {
@@ -269,12 +278,19 @@ body {
 
 .botonProducto {
   @extend %flexBotonProducto;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .botonProducto button {
   @extend %botonBase;
   background-color: #f3f3f3;
   color: $buttonColor;
+  flex: 1 1 45%; // que los botones sean responsive y no crezcan más del 45%
+  min-width: 120px;
+  max-width: 180px;
 }
 
 .botonProducto button:hover {
@@ -366,22 +382,22 @@ footer {
 
   .contenedorProducto {
     width: 100%;
-    max-width: 95vw;
-    padding: 1rem;
-    align-items: center;
+    max-width: 350px; // limitar ancho máximo para que no estire
+    padding: 1rem; // reducir padding para mobile
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .botonProducto {
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.5rem;
-    width: 100%;
   }
 
   .botonProducto button {
-    width: 90%;
-    padding: 0.6rem;
-    font-size: 0.9rem;
+    flex: 1 1 45%;
+    min-width: 120px;
+    max-width: 150px;
   }
 
   .tituloHeader {
@@ -422,6 +438,8 @@ footer {
 @include responsive(tablet) {
   .contenedorProducto {
     width: 48%;
+    max-width: none;
+    padding: 1.5rem;
   }
 
   .tituloHeader {
@@ -452,6 +470,8 @@ footer {
 @include responsive(desktop) {
   .contenedorProducto {
     width: 300px;
+    max-width: none;
+    padding: 1.5rem;
   }
 
   .tituloHeader {
