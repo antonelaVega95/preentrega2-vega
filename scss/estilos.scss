@@ -194,7 +194,7 @@ body {
   align-items: center;
   @include animacion(aparecerDesdeAbajo, 2s);
 
-  height: auto; // para evitar alargamiento extraño
+  height: auto; 
   max-height: none;
   padding: 1.5rem;
   box-sizing: border-box;
@@ -211,7 +211,7 @@ body {
   width: 100%;
   height: auto;
   max-height: 300px;
-  object-fit: contain; // para que no se corte ni se deforme
+  object-fit: contain; 
   border-radius: 8px;
 }
 
