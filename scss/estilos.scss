@@ -25,7 +25,7 @@ $colorBlanco: #ffffff;
 %tarjetaBase {
   border-radius: 10px;
   padding: 1.5rem;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 %centradoTexto {
@@ -56,7 +56,7 @@ $colorBlanco: #ffffff;
   }
 }
 
-// Mixin para animaciones
+// Mixin animacion
 @mixin animacion($nombre, $duracion: 1s, $timing: ease-in-out, $retraso: 0s, $iteraciones: 1) {
   animation-name: $nombre;
   animation-duration: $duracion;
@@ -81,6 +81,12 @@ $colorBlanco: #ffffff;
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* Reset general */
 * {
   margin: 0;
@@ -103,19 +109,42 @@ ul {
 
 /* Header */
 .headerContainer {
+  position: relative;
+  height: 80vh;
   background-image: url(../img/imagenHeader.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 80vh;
-  position: relative;
+  overflow: hidden; // para que no se salga el ::before
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+      270deg,
+      rgba(123, 75, 204, 0.6),
+      rgba(180, 131, 245, 0.6),
+      rgba(123, 75, 204, 0.6),
+      rgba(180, 131, 245, 0.6)
+    );
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    z-index: 1; // encima de la imagen pero debajo del contenido
+    pointer-events: none;
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
 }
 
-.oscurecerFondo {
+/* .oscurecerFondo {
   width: 100%;
   height: 100%;
   background-color: $fondoOscuroColor;
-}
+} */ // borrador, se deja comentado
 
 .logotipoHeader {
   width: 5rem;
@@ -173,7 +202,7 @@ body {
   margin: 2rem 0 1rem 0;
 }
 
-/*Flex*/
+/* Flex */
 .productosFlexContainer {
   display: flex;
   flex-wrap: wrap;
@@ -191,12 +220,15 @@ body {
   flex-direction: column;
   align-items: center;
   @include animacion(aparecerDesdeAbajo, 2s);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contenedorProducto:hover {
-  box-shadow: 0 0 10px rgba(106, 90, 205, 0.4);
-  transform: translateY(-5px);
-  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(106, 90, 205, 0.5);
+  transform: translateY(-10px) scale(1.05) rotateX(5deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tamañoImagen {
@@ -248,16 +280,17 @@ body {
   @extend %botonBase;
   background-color: #f3f3f3;
   color: $buttonColor;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .botonProducto button:hover {
   background-color: dodgerblue;
-  transform: scale(1.05);
+  transform: scale(1.1) translateY(-2px);
 }
 
 .botonProducto button:active {
   background-color: navy;
-  transform: scale(0.95);
+  transform: scale(0.95) translateY(1px);
 }
 
 .botonProducto button:focus {
@@ -278,14 +311,14 @@ body {
   @include card(#abb1ad, #5d5e5d);
   @extend %centradoTexto;
   @include animacion(subirYDesaparecer, 1s);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .gridItems:hover {
   background-color: #888;
   color: $colorBlanco;
-  cursor: pointer;
-  transform: scale(1.03);
-  transition: all 0.2s ease;
+  transform: scale(1.07) translateY(-3px);
 }
 
 /* Footer */
@@ -330,7 +363,6 @@ footer {
 }
 
 // Media queries responsive
-
 @include responsive(mobile) {
   .navbar-nav {
     flex-direction: column;
@@ -441,3 +473,4 @@ footer {
     font-size: 1.5rem;
   }
 }
+
