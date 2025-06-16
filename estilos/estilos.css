@@ -310,7 +310,7 @@ footer {
     width: 100%;
     max-width: 320px;
     padding: 1rem;
-    margin: 0 auto;
+    margin: 1rem auto;
     height: auto;
     max-height: none;
     box-sizing: border-box;
@@ -324,14 +324,13 @@ footer {
   .mochilasTitulo {
     font-size: 1.2rem;
     margin-top: 0.5rem;
+    text-align: center;
   }
-  .descripcionProducto {
-    font-size: 1rem;
-    margin-top: 0.3rem;
-  }
+  .descripcionProducto,
   .precioProducto {
     font-size: 1rem;
-    margin-top: 0.3rem;
+    margin-top: 0.4rem;
+    text-align: center;
   }
   .botonProducto {
     flex-direction: column;
@@ -347,10 +346,12 @@ footer {
     font-size: 2rem;
     margin-top: 6rem;
     padding: 0 1rem;
+    text-align: center;
   }
   .descripcionHeader {
     font-size: 1rem;
     padding: 0 1rem;
+    text-align: center;
   }
   .gridConteiner {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
