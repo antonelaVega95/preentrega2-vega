@@ -17,7 +17,7 @@
 .gridItems, .contenedorProducto {
   border-radius: 10px;
   padding: 1.5rem;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 footer, .gridItems, .descripcionProducto,
@@ -86,12 +86,12 @@ ul {
 
 /* Header */
 .headerContainer {
-  position: relative;
-  height: 80vh;
   background-image: url(../img/imagenHeader.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  height: 80vh;
+  position: relative;
   overflow: hidden;
 }
 .headerContainer::before {
@@ -107,17 +107,21 @@ ul {
   z-index: 1;
   pointer-events: none;
 }
-.headerContainer > * {
-  position: relative;
+.headerContainer .oscurecerFondo {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.123);
+  position: absolute;
   z-index: 2;
 }
 
-/* .oscurecerFondo { ... } */
 .logotipoHeader {
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
   object-fit: cover;
+  position: relative;
+  z-index: 3;
 }
 
 .navbar {
@@ -132,6 +136,8 @@ ul {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+  position: relative;
+  z-index: 3;
 }
 
 .enlacesHeader {
@@ -149,6 +155,8 @@ ul {
   animation-timing-function: ease-in-out;
   animation-delay: 0s;
   animation-iteration-count: 1;
+  position: relative;
+  z-index: 3;
 }
 
 .descripcionHeader {
@@ -156,9 +164,12 @@ ul {
   color: #f1f1f1;
   margin-top: 1rem;
   max-width: 600px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0 1rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 3;
 }
 
 /* Body */
@@ -169,10 +180,10 @@ body {
 /* Título secciones */
 .productosTitulo {
   font-size: 1.7rem;
-  margin: 2rem 0 1rem;
+  margin: 2rem 0 1rem 0;
 }
 
-/* Flex */
+/*Flex*/
 .productosFlexContainer {
   display: flex;
   flex-wrap: wrap;
@@ -195,16 +206,14 @@ body {
   animation-timing-function: ease-in-out;
   animation-delay: 0s;
   animation-iteration-count: 1;
-  cursor: pointer;
-  transform-style: preserve-3d;
 }
 
 .contenedorProducto:hover {
-  box-shadow: 0 10px 20px rgba(106, 90, 205, 0.5);
-  transform: translateY(-10px) scale(1.05) rotateX(5deg);
+  box-shadow: 0 0 10px rgba(106, 90, 205, 0.4);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
 }
 
-/* Imagen y detalles de producto */
 .tamañoImagen {
   width: 30%;
   height: auto;
@@ -252,12 +261,12 @@ body {
 
 .botonProducto button:hover {
   background-color: dodgerblue;
-  transform: scale(1.1) translateY(-2px);
+  transform: scale(1.05);
 }
 
 .botonProducto button:active {
   background-color: navy;
-  transform: scale(0.95) translateY(1px);
+  transform: scale(0.95);
 }
 
 .botonProducto button:focus {
@@ -282,13 +291,14 @@ body {
   animation-timing-function: ease-in-out;
   animation-delay: 0s;
   animation-iteration-count: 1;
-  cursor: pointer;
 }
 
 .gridItems:hover {
   background-color: #888;
   color: #ffffff;
-  transform: scale(1.07) translateY(-3px);
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: all 0.2s ease;
 }
 
 /* Footer */
@@ -331,7 +341,6 @@ footer {
   color: #7b4bcc;
 }
 
-/* Media queries responsive */
 @media (max-width: 768px) {
   .navbar-nav {
     flex-direction: column;
@@ -341,13 +350,18 @@ footer {
     width: 100%;
     max-width: 95vw;
     padding: 1rem;
+    align-items: center;
   }
-  .productoImagen {
-    height: auto;
-    max-height: 200px;
+  .botonProducto {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
   }
-  .mochilasTitulo {
-    font-size: 1rem;
+  .botonProducto button {
+    width: 90%;
+    padding: 0.6rem;
+    font-size: 0.9rem;
   }
   .tituloHeader {
     font-size: 2rem;
@@ -375,23 +389,6 @@ footer {
   }
   .footerRedes {
     font-size: 1.2rem;
-  }
-  .contenedorProducto {
-    width: 100%;
-    max-width: 95vw;
-    padding: 1rem;
-    align-items: center;
-  }
-  .botonProducto {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-  }
-  .botonProducto button {
-    width: 90%;
-    padding: 0.6rem;
-    font-size: 0.9rem;
   }
 }
 @media (max-width: 992px) {
