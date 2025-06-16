@@ -112,11 +112,7 @@ ul {
   z-index: 2;
 }
 
-/* .oscurecerFondo {
-  width: 100%;
-  height: 100%;
-  background-color: $fondoOscuroColor;
-} */
+/* .oscurecerFondo { ... } */
 .logotipoHeader {
   width: 5rem;
   height: 5rem;
@@ -160,8 +156,7 @@ ul {
   color: #f1f1f1;
   margin-top: 1rem;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   padding: 0 1rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
@@ -174,7 +169,7 @@ body {
 /* Título secciones */
 .productosTitulo {
   font-size: 1.7rem;
-  margin: 2rem 0 1rem 0;
+  margin: 2rem 0 1rem;
 }
 
 /* Flex */
@@ -202,15 +197,14 @@ body {
   animation-iteration-count: 1;
   cursor: pointer;
   transform-style: preserve-3d;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contenedorProducto:hover {
   box-shadow: 0 10px 20px rgba(106, 90, 205, 0.5);
   transform: translateY(-10px) scale(1.05) rotateX(5deg);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Imagen y detalles de producto */
 .tamañoImagen {
   width: 30%;
   height: auto;
@@ -254,7 +248,6 @@ body {
 .botonProducto button {
   background-color: #f3f3f3;
   color: rgb(54, 55, 139);
-  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .botonProducto button:hover {
@@ -290,7 +283,6 @@ body {
   animation-delay: 0s;
   animation-iteration-count: 1;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .gridItems:hover {
@@ -339,6 +331,7 @@ footer {
   color: #7b4bcc;
 }
 
+/* Media queries responsive */
 @media (max-width: 768px) {
   .navbar-nav {
     flex-direction: column;
@@ -346,11 +339,15 @@ footer {
   }
   .contenedorProducto {
     width: 100%;
-    max-width: 90vw;
+    max-width: 95vw;
+    padding: 1rem;
   }
-  .botonProducto {
-    flex-direction: column;
-    align-items: stretch;
+  .productoImagen {
+    height: auto;
+    max-height: 200px;
+  }
+  .mochilasTitulo {
+    font-size: 1rem;
   }
   .tituloHeader {
     font-size: 2rem;
