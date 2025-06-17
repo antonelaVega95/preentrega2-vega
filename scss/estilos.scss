@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Variables
 $fondoOscuroColor: rgba(0, 0, 0, 0.123);
 $colorTituloHeader: hsl(0, 0%, 17%);
@@ -473,4 +474,15 @@ footer {
     font-size: 1.5rem;
   }
 }
+=======
+>>>>>>> 9767c0f (preentrega nro 3 coder)
 
+@import 'variables/variables';
+@import 'utilities/extends.scss';
+@import 'utilities/mixin';
+@import 'utilities/animations';
+@import 'layout/header';
+@import 'layout/main';
+@import 'layout/footer';
+@import 'mq/mediaqueries';
+@import 'utilities/reset';
