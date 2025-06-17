@@ -1,0 +1,27 @@
+// Extends
+%flexBotonProducto {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+%botonBase {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+%tarjetaBase {
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease;
+  box-sizing: border-box;
+  background-clip: padding-box;
+}
+
+%centradoTexto {
+  text-align: center;
+}

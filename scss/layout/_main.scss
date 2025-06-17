@@ -1,0 +1,120 @@
+/* Body */
+body {
+  padding-top: 5px;
+}
+
+/* Título secciones */
+.productosTitulo {
+  font-size: 1.7rem;
+  @extend %centradoTexto;
+  margin: 2rem 0 1rem 0;
+}
+
+/*Flex*/
+.productosFlexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+}
+
+/* Tarjeta de producto */
+.contenedorProducto {
+  @extend %tarjetaBase;
+  @include card($backgroundColorProducto, blueviolet);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include animacion(aparecerDesdeAbajo, 2s);
+
+  height: auto; 
+  max-height: none;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background-clip: padding-box;
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(106, 90, 205, 0.4);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+  }
+}
+
+.productoImagen {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain; 
+  border-radius: 8px;
+}
+
+.mochilasTitulo {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.descripcionProducto,
+.precioProducto {
+  margin-top: 0.5rem;
+  @extend %centradoTexto;
+}
+
+.precioProducto {
+  color: green;
+}
+
+.precioProducto span {
+  text-decoration: line-through;
+  color: red;
+  margin-right: 0.5rem;
+}
+
+.botonProducto {
+  @extend %flexBotonProducto;
+}
+
+.botonProducto button {
+  @extend %botonBase;
+  background-color: #f3f3f3;
+  color: $buttonColor;
+}
+
+.botonProducto button:hover {
+  background-color: dodgerblue;
+  transform: scale(1.05);
+}
+
+.botonProducto button:active {
+  background-color: navy;
+  transform: scale(0.95);
+}
+
+.botonProducto button:focus {
+  outline: 2px solid lightblue;
+  outline-offset: 2px;
+}
+
+/* Grid */
+.gridConteiner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.gridItems {
+  @extend %tarjetaBase;
+  @include card(#abb1ad, #5d5e5d);
+  @extend %centradoTexto;
+  @include animacion(subirYDesaparecer, 1s);
+}
+
+.gridItems:hover {
+  background-color: #888;
+  color: $colorBlanco;
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: all 0.2s ease;
+}

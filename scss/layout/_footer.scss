@@ -1,0 +1,40 @@
+/* Footer */
+footer {
+  background-color: $backgroundColorFooter;
+  color: $colorBlanco;
+  padding: 2rem 1rem;
+  @extend %centradoTexto;
+  margin-top: 3rem;
+  border-top: 3px solid #7b4bcc;
+}
+
+.footerContenido p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.footerRedes {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+}
+
+.footerRedes a {
+  margin: 0 0.5rem;
+  color: $colorBlanco;
+  text-decoration: none;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.footerRedes a:hover {
+  transform: scale(1.2);
+  color: #7b4bcc;
+}
+
+.footerContacto {
+  color: $colorBlanco;
+  text-decoration: underline;
+}
+
+.footerContacto:hover {
+  color: #7b4bcc;
+}
